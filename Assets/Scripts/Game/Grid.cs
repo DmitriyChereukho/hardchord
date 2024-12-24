@@ -38,47 +38,26 @@ namespace Game
             
             var square_rect = _gridSquares[0].GetComponent<RectTransform>();
             
-            _offset.x = square_rect.rect.width * square_rect.transform.localScale.x + everySquareOffset;
-            _offset.y = square_rect.rect.height * square_rect.transform.localScale.y + everySquareOffset;
+            _offset.x = square_rect.rect.width + everySquareOffset + squaresGap;
+            _offset.y = square_rect.rect.height + everySquareOffset + squaresGap;
 
             foreach (GameObject gridSquare in _gridSquares)
             {
-                if (column_number + 1 > columns)
+                if (column_number >= columns)
                 {
-                    square_gap_number.x = 0;
-
                     column_number = 0;
                     row_number++;
-                    row_moved = false;
                 }
 
-                var pos_x_offset = _offset.x * column_number + (square_gap_number.x * squaresGap);
-                var pos_y_offset = _offset.y * row_number + (square_gap_number.y * squaresGap);
+                var pos_x_offset = _offset.x * column_number;
+                var pos_y_offset = _offset.y * row_number;
 
-                if (column_number > 0 && column_number % 3 == 0)
-                {
-                    square_gap_number.x++;
-                    pos_x_offset += squaresGap;
-                }
-
-                if (row_number > 0 && row_number % 3 == 0 && row_moved == false)
-                {
-                    row_moved = true;
-                    square_gap_number.y++;
-                    pos_y_offset += squaresGap;
-                }
-                
-                gridSquare.GetComponent<RectTransform>().anchoredPosition = new Vector2(
-                    startPosition.x + pos_x_offset,
-                    startPosition.y + pos_y_offset
-                    );
-                
                 gridSquare.GetComponent<RectTransform>().localPosition = new Vector3(
                     startPosition.x + pos_x_offset,
                     startPosition.y - pos_y_offset,
                     0.0f
                 );
-                
+
                 column_number++;
             }
         }
