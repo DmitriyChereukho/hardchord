@@ -13,11 +13,15 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     [HideInInspector]
     public ShapeData CurrentShapeData;
     
+    public int TotalSquareNumber {get; set; }
+    
     private List<GameObject> _currentShape = new List<GameObject>();
     private Vector3 _shapeStartScale;
     private RectTransform _transform;
     private bool _shapeDraggable = true;
+    private Vector3 _startPosition;
     private Canvas _canvas;
+    private bool _shapeActive = true;
 
     public void Awake()
     {
@@ -25,19 +29,78 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         _transform = this.GetComponent<RectTransform>();
         _canvas = GetComponentInParent<Canvas>();
         _shapeDraggable = true;
+        _startPosition = _transform.localPosition;
+        _shapeActive = true;
+    }
+
+    private void OnEnable()
+    {
+        GameEvents.MoveShapeToStartPosition += MoveShapeToStartPosition;
+    }
+
+    private void MoveShapeToStartPosition()
+    {
+        _transform.transform.localPosition = _startPosition;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.MoveShapeToStartPosition -= MoveShapeToStartPosition;
+    }
+
+    public bool IsOnStartPosition()
+    {
+        return _transform.localPosition == _startPosition;
+    }
+
+    public bool IsAnyOfShapeSquareActive()
+    {
+        foreach (var square in _currentShape)
+        {
+            if (square.gameObject.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void DeactivateShape()
+    {
+        if (_shapeActive)
+        {
+            foreach (var square in _currentShape)
+            {
+                square?.GetComponent<ShapeSquare>().DeactivateShape();
+            }
+        }
+        _shapeActive = false;
+    }
+
+    public void ActivateShape()
+    {
+        if (!_shapeActive)
+        {
+            foreach (var square in _currentShape)
+            {
+                square?.GetComponent<ShapeSquare>().ActivateShape();
+            }
+        }
+        _shapeActive = true;
     }
 
     public void RequestNewShape(ShapeData shapeData)
     {
+        _transform.localPosition = _startPosition;
         CreateShape(shapeData);
     }
 
     public void CreateShape(ShapeData shapeData)
     {
         CurrentShapeData = shapeData;
-        var totalSquareNumber = GetNumberOfSquares(shapeData);
+        TotalSquareNumber = GetNumberOfSquares(shapeData);
 
-        while (_currentShape.Count < totalSquareNumber)
+        while (_currentShape.Count < TotalSquareNumber)
         {
             _currentShape.Add(Instantiate(squareShapeImage, transform));
         }
@@ -74,6 +137,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     private float GetYPositionForShapeSquare(ShapeData shapeData, int row, Vector2 moveDistance)
     {
         float shiftOnY = 0f;
+        float additionalGap = 5f;
 
         if (shapeData.rows > 1)
         {
@@ -84,12 +148,12 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
                 if (row < middleSquareIndex)
                 {
-                    shiftOnY = moveDistance.y * 1;
+                    shiftOnY = (moveDistance.y + additionalGap) * 1;
                     shiftOnY *= multiplier;
                 }
                 else if (row > middleSquareIndex)
                 {
-                    shiftOnY = moveDistance.y * -1;
+                    shiftOnY = (moveDistance.y + additionalGap) * -1;
                     shiftOnY *= multiplier;
                 }
             }
@@ -103,23 +167,23 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
                 {
                     if (row == middleSquareIndex2)
                     {
-                        shiftOnY = (moveDistance.y / 2) * -1;
+                        shiftOnY = (moveDistance.y / 2 + additionalGap) * -1;
                     }
 
                     if (row == middleSquareIndex1)
                     {
-                        shiftOnY = moveDistance.y / 2;
+                        shiftOnY = (moveDistance.y + additionalGap) / 2;
                     }
                 }
 
                 if (row < middleSquareIndex1 && row < middleSquareIndex2)
                 {
-                    shiftOnY = moveDistance.y * 1;
+                    shiftOnY = (moveDistance.y + additionalGap) * 1;
                     shiftOnY *= multiplier;
                 }
                 else if (row > middleSquareIndex1 && row > middleSquareIndex2)
                 {
-                    shiftOnY = moveDistance.y * -1;
+                    shiftOnY = (moveDistance.y + additionalGap) * -1;
                     shiftOnY *= multiplier;
                 }
             }
@@ -131,6 +195,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     private float GetXPositionForShapeSquare(ShapeData shapeData, int column, Vector2 moveDistance)
     {
         float shiftOnX = 0f;
+        float additionalGap = 5f;
 
         if (shapeData.columns > 1)
         {
@@ -140,12 +205,12 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
                 var multiplier = (shapeData.columns - 1) / 2;
                 if (column < middleSquareIndex)
                 {
-                    shiftOnX = moveDistance.x * -1;
+                    shiftOnX = (moveDistance.x + additionalGap) * -1;
                     shiftOnX *= multiplier;
                 }
                 else if (column > middleSquareIndex)
                 {
-                    shiftOnX = moveDistance.x;
+                    shiftOnX = (moveDistance.x + additionalGap);
                     shiftOnX *= multiplier;
                 }
             }
@@ -159,23 +224,23 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
                 {
                     if (column == middleSquareIndex2)
                     {
-                        shiftOnX = moveDistance.x / 2;
+                        shiftOnX = moveDistance.x / 2 + additionalGap;
                     }
 
                     if (column == middleSquareIndex1)
                     {
-                        shiftOnX = moveDistance.x / -2;
+                        shiftOnX = moveDistance.x / -2 + additionalGap;
                     }
                 }
 
                 if (column < middleSquareIndex1 && column < middleSquareIndex2)
                 {
-                    shiftOnX = moveDistance.x * -1;
+                    shiftOnX = (moveDistance.x + additionalGap) * -1;
                     shiftOnX *= multiplier;
                 }
                 else if (column > middleSquareIndex1 && column > middleSquareIndex2)
                 {
-                    shiftOnX = moveDistance.x;
+                    shiftOnX = (moveDistance.x + additionalGap);
                     shiftOnX *= multiplier;
                 }
             }
@@ -204,23 +269,19 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
         this.GetComponent<RectTransform>().localScale = shapeSelectedScale;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
         _transform.anchorMin = new Vector2(0, 0);
         _transform.anchorMax = new Vector2(0, 0);
         _transform.pivot = new Vector2(0, 0);
@@ -234,12 +295,11 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
         this.GetComponent<RectTransform>().localScale = _shapeStartScale;
+        GameEvents.CheckIfShapeCanBePlaced();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
     }
 }

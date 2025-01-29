@@ -7,9 +7,10 @@ namespace Game
 {
     public class Grid : MonoBehaviour
     {
+        public ShapeStorage shapeStorage;
         public int columns = 0;
         public int rows = 0;
-        public float squaresGap = 0.1f;
+        public float squaresGap = 0.5f;
         public GameObject gridSquare;
         public Vector2 startPosition = new Vector2(0.0f, 0.0f);
         public float squareScale = 0.5f;
@@ -17,6 +18,52 @@ namespace Game
         
         private Vector2 _offset = new Vector2(0.0f, 0.0f);
         private List<GameObject> _gridSquares = new List<GameObject>();
+
+        private void OnEnable()
+        {
+            GameEvents.CheckIfShapeCanBePlaced += CheckIfShapeCanBePlaced;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.CheckIfShapeCanBePlaced -= CheckIfShapeCanBePlaced;
+        }
+        
+        private void CheckIfShapeCanBePlaced()
+        {
+            var squareIndexes = new List<int>();
+            
+            foreach (var square in _gridSquares)
+            {
+                var gridSquare = square.GetComponent<GridSquare>();
+
+                if (gridSquare.Selected && !gridSquare.SquareOccupied)
+                {
+                    squareIndexes.Add(gridSquare.SquareIndex);
+                    gridSquare.Selected = false;
+                    //gridSquare.ActivateSquare();
+                }
+            }
+
+            var currentSelectedShape = shapeStorage.GetCurrentSelectedShape();
+            if (currentSelectedShape == null)
+            {
+                return;
+            }
+
+            if (currentSelectedShape.TotalSquareNumber == squareIndexes.Count)
+            {
+                foreach (var squareIndex in squareIndexes)
+                {
+                    _gridSquares[squareIndex].GetComponent<GridSquare>().PlaceShapeOnBoard();
+                }
+                currentSelectedShape.DeactivateShape();
+            }
+            else
+            {
+                GameEvents.MoveShapeToStartPosition();
+            }
+        }
 
         private void Start()
         {
@@ -71,6 +118,7 @@ namespace Game
                 for (var column = 0; column < columns; column++)
                 {
                     _gridSquares.Add(Instantiate(gridSquare));
+                    _gridSquares[^1].GetComponent<GridSquare>().SquareIndex = square_index;
                     _gridSquares[^1].transform.SetParent(transform);
                     _gridSquares[^1].transform.localScale = new Vector3(squareScale, squareScale, squareScale);
                     _gridSquares[^1].GetComponent<GridSquare>().SetImage(square_index % 2 == 0);

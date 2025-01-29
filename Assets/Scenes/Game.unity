@@ -207,6 +207,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4070983377175859192, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
+      propertyPath: shapeSelectedScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070983377175859192, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
+      propertyPath: shapeSelectedScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070983377175859192, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
+      propertyPath: shapeSelectedScale.z
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4660083817788187556, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
       propertyPath: m_Name
       value: Shape
@@ -368,12 +380,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b75190e90e606449e0525043adfb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columns: 9
-  rows: 9
-  squaresGap: 3
+  shapeStorage: {fileID: 1426256674}
+  columns: 12
+  rows: 12
+  squaresGap: 25
   gridSquare: {fileID: 7616288399665724997, guid: 4a5ea1fc331ace844a0dfe7caba34a6e, type: 3}
-  startPosition: {x: -435, y: 442}
-  squareScale: 0.9
+  startPosition: {x: -560, y: 800}
+  squareScale: 1
   everySquareOffset: 0.5
 --- !u!1 &402851395
 GameObject:
@@ -678,6 +691,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4070983377175859192, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
+      propertyPath: shapeSelectedScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070983377175859192, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
+      propertyPath: shapeSelectedScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070983377175859192, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
+      propertyPath: shapeSelectedScale.z
+      value: 0.9
+      objectReference: {fileID: 0}
     - target: {fileID: 4660083817788187556, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
       propertyPath: m_Name
       value: Shape (1)
@@ -942,6 +967,18 @@ PrefabInstance:
     - target: {fileID: 2142131344166591251, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070983377175859192, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
+      propertyPath: shapeSelectedScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070983377175859192, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
+      propertyPath: shapeSelectedScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070983377175859192, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
+      propertyPath: shapeSelectedScale.z
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4660083817788187556, guid: 314d66a403d402440b833b7a6cbdc35a, type: 3}
       propertyPath: m_Name
