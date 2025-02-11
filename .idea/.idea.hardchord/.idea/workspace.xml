@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b859552-7cfe-4115-be31-7b6ef2ab279e" name="Changes" comment="" />
+    <list default="true" id="8b859552-7cfe-4115-be31-7b6ef2ab279e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.hardchord/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.hardchord/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/SquareImage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/SquareImage.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/GridSquare.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/GridSquare.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shape/ShapeSquare.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shape/ShapeSquare.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,6 +118,8 @@
       <workItem from="1733829379956" duration="4620000" />
       <workItem from="1733952200512" duration="15004000" />
       <workItem from="1734433732183" duration="2534000" />
+      <workItem from="1738182033537" duration="6964000" />
+      <workItem from="1738792999428" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -130,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733830175886</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Shapes placement">
+      <option name="closed" value="true" />
+      <created>1738189637124</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738189637124</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +166,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Генерация клеток (не работает)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Генерация клеток (не работает)" />
+    <MESSAGE value="Shapes placement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shapes placement" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

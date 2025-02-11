@@ -46,6 +46,10 @@ namespace Game
                 Selected = true;
                 hooverImage.gameObject.SetActive(true);
             }
+            else if (collision.GetComponent<ShapeSquare>() != null)
+            {
+                collision.GetComponent<ShapeSquare>().SetOccupied();
+            }
         }
         
         private void OnTriggerStay2D(Collider2D collision)
@@ -54,6 +58,10 @@ namespace Game
             if (SquareOccupied == false)
             {
                 hooverImage.gameObject.SetActive(true);
+            }
+            else if (collision.GetComponent<ShapeSquare>() != null)
+            {
+                collision.GetComponent<ShapeSquare>().SetOccupied();
             }
         }
 
