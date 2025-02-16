@@ -71,6 +71,9 @@ namespace Game
             {
                 Selected = false;
                 hooverImage.gameObject.SetActive(false);
+            } else if (collision.GetComponent<ShapeSquare>() != null)
+            {
+                collision.GetComponent<ShapeSquare>().UnSetOccupied();
             }
         }
 

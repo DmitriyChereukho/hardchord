@@ -10,7 +10,7 @@ public class ShapeStorage : MonoBehaviour
     {
         foreach (var shape in shapeList)
         {
-            var shapeIndex = UnityEngine.Random.Range(0, shapeData.Count);
+            var shapeIndex = Random.Range(0, shapeData.Count);
             shape.CreateShape(shapeData[shapeIndex]);
         }
     }

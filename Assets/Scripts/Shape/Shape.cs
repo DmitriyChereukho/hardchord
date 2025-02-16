@@ -15,27 +15,32 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     
     public int TotalSquareNumber {get; set; }
     
-    private List<GameObject> _currentShape = new List<GameObject>();
+    private List<GameObject> _currentShape = new();
     private Vector3 _shapeStartScale;
     private RectTransform _transform;
     private bool _shapeDraggable = true;
     private Vector3 _startPosition;
     private Canvas _canvas;
     private bool _shapeActive = true;
+    
+    public AudioClip placeSound; 
+    private AudioSource audioSource;
 
     public void Awake()
     {
-        _shapeStartScale = this.GetComponent<RectTransform>().localScale;
-        _transform = this.GetComponent<RectTransform>();
+        _shapeStartScale = GetComponent<RectTransform>().localScale;
+        _transform = GetComponent<RectTransform>();
         _canvas = GetComponentInParent<Canvas>();
         _shapeDraggable = true;
+        
+        audioSource = gameObject.AddComponent<AudioSource>();
         _startPosition = _transform.localPosition;
         _shapeActive = true;
     }
 
     private void OnEnable()
     {
-        GameEvents.MoveShapeToStartPosition += MoveShapeToStartPosition;
+        GameEvents.moveShapeToStartPosition += MoveShapeToStartPosition;
     }
 
     private void MoveShapeToStartPosition()
@@ -45,7 +50,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     private void OnDisable()
     {
-        GameEvents.MoveShapeToStartPosition -= MoveShapeToStartPosition;
+        GameEvents.moveShapeToStartPosition -= MoveShapeToStartPosition;
     }
 
     public bool IsOnStartPosition()
@@ -100,7 +105,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         CurrentShapeData = shapeData;
         TotalSquareNumber = GetNumberOfSquares(shapeData);
 
-        while (_currentShape.Count < TotalSquareNumber)
+        while (_currentShape.Count <= TotalSquareNumber)
         {
             _currentShape.Add(Instantiate(squareShapeImage, transform));
         }
@@ -277,7 +282,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        this.GetComponent<RectTransform>().localScale = shapeSelectedScale;
+        GetComponent<RectTransform>().localScale = shapeSelectedScale;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -296,7 +301,13 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     public void OnEndDrag(PointerEventData eventData)
     {
         this.GetComponent<RectTransform>().localScale = _shapeStartScale;
-        GameEvents.CheckIfShapeCanBePlaced();
+        GameEvents.checkIfShapeCanBePlaced();
+        
+        // Воспроизводим звук при размещении
+        if (placeSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(placeSound);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

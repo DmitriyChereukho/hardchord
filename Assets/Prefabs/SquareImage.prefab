@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 6286595657586805340, guid: 8c509d3e962684e849fbd19f527a451a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4987337320017983735, guid: 71a3474112ebfcc418f718c084da63a3, type: 3}
+  m_Sprite: {fileID: -1629362560720184693, guid: 541fec3f51f8e496b837f8da3e13fe86, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8717093934077140181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e9cc7f4da91b246b0e2c3077335186, type: 3}
+  m_Script: {fileID: 11500000, guid: f4432ffd3061e4fa28556825f70f2ab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   occupiedImage: {fileID: 1709701177884975235}
@@ -224,7 +224,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

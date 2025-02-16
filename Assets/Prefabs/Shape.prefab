@@ -45,10 +45,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4660083817788187556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1607e630b9543a4439581b808aac60de, type: 3}
+  m_Script: {fileID: 11500000, guid: 52a9fe0194cfb4b6b8bac0a980da91ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  squareShapeImage: {fileID: 8717093934077140181, guid: adf1d6cf39aa64749a680b84be02941c, type: 3}
-  shapeSelectedScale: {x: 0.9, y: 0.9, z: 0.9}
+  squareShapeImage: {fileID: 8717093934077140181, guid: 3b531ef7aad3c4fc0bbb5b9ddc7a1de5, type: 3}
+  shapeSelectedScale: {x: 0.8, y: 0.8, z: 0.8}
   offset: {x: 0, y: 700}
-  CurrentShapeData: {fileID: 11400000, guid: f6fa4d0dc6be3d44c8723efa2ca4a4d2, type: 2}
+  CurrentShapeData: {fileID: 0}
+  placeSound: {fileID: 8300000, guid: 270593ac818fe4d5e968a2791cb251b8, type: 3}
