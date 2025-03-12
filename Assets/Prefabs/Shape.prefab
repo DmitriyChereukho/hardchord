@@ -52,4 +52,4 @@ MonoBehaviour:
   shapeSelectedScale: {x: 0.8, y: 0.8, z: 0.8}
   offset: {x: 0, y: 700}
   CurrentShapeData: {fileID: 0}
-  placeSound: {fileID: 8300000, guid: 270593ac818fe4d5e968a2791cb251b8, type: 3}
+  placeSound: {fileID: 8300000, guid: 4d7b5381183847a68e3d3176fe68a52c, type: 3}
