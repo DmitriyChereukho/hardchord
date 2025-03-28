@@ -26,8 +26,13 @@ namespace Game
         {
             GameEvents.checkIfShapeCanBePlaced -= CheckIfShapeCanBePlaced;
         }
+        
+        public List<GameObject> GetGridSquares()
+        {
+            return _gridSquares;
+        }
 
-        private void CheckIfShapeCanBePlaced()
+        private void CheckIfShapeCanBePlaced(Shape shape)
         {
             var squareIndexes = new List<int>();
             var occupiedIndexes = new HashSet<int>();
@@ -53,28 +58,30 @@ namespace Game
                 }
             }
 
-            var currentSelectedShape = shapeStorage?.GetCurrentSelectedShape();
-            if (currentSelectedShape == null)
-            {
-                return;
-            }
-
             // Проверяем, можно ли разместить фигуру
-            if (currentSelectedShape.TotalSquareNumber == squareIndexes.Count &&
+            if (shape.TotalSquareNumber == squareIndexes.Count &&
                 !squareIndexes.Exists(index => occupiedIndexes.Contains(index)))
             {
                 foreach (var squareIndex in squareIndexes)
                 {
                     var squareComponent = _gridSquares[squareIndex].GetComponent<GridSquare>();
-                    squareComponent.PlaceShapeOnBoard();
+                    squareComponent.PlaceShapeOnBoard(shape); // Передаем фигуру
                     squareComponent.SquareOccupied = true;
                 }
-
-                currentSelectedShape.DeactivateShape();
+                
+                shape.SetShapeInactive();
+                
+                // Воспроизводим звук
+                if (shape.audioSource != null && shape.audioSource.clip != null)
+                {
+                    shape.audioSource.PlayOneShot(shape.audioSource.clip);
+                }
+                
+                GameEvents.requestNewShapes();
             }
             else
             {
-                GameEvents.moveShapeToStartPosition();
+                GameEvents.moveShapeToStartPosition(shape);
             }
         }
 

@@ -1,62 +1,61 @@
 using UnityEngine;
 
-
-    [CreateAssetMenu]
+[CreateAssetMenu]
+[System.Serializable]
+public class ShapeData : ScriptableObject
+{
     [System.Serializable]
-    public class ShapeData : ScriptableObject
+    public class Row
     {
-        [System.Serializable]
-        public class Row
+        public bool[] column;
+        private int _size;
+
+        public Row()
         {
-            public bool[] column;
-            private int _size;
-        
-            public Row(){}
-
-            public Row(int size)
-            {
-                CreateRow(size);
-            }
-
-            public void CreateRow(int size)
-            {
-                _size = size;
-                column = new bool[_size];
-                ClearRow();
-            }
-
-            public void ClearRow()
-            {
-                for (int i = 0; i < _size; i++)
-                {
-                    column[i] = false;
-                }
-            }
-        
-        
         }
 
-        public int columns = 0;
-
-        public int rows = 0;
-
-        public Row[] Board;
-
-        public void Clear()
+        public Row(int size)
         {
-            for (int i = 0; i < rows; i++)
-            {
-                Board[i].ClearRow();
-            }
+            CreateRow(size);
         }
 
-        public void CreateNewBoard()
+        public void CreateRow(int size)
         {
-            Board = new Row[rows];
+            _size = size;
+            column = new bool[_size];
+            ClearRow();
+        }
 
-            for (int i = 0; i < rows; i++)
+        public void ClearRow()
+        {
+            for (var i = 0; i < _size; i++)
             {
-                Board[i] = new Row(columns);
+                column[i] = false;
             }
-        } 
+        }
     }
+
+    public int columns;
+
+    public int rows;
+
+    public Row[] Board;
+    
+    public void Clear()
+    {
+        for (var i = 0; i < rows; i++)
+        {
+            Board[i].ClearRow();
+        }
+    }
+
+    public void CreateNewBoard()
+    {
+        Board = new Row[rows];
+
+        for (var i = 0; i < rows; i++)
+        {
+            Board[i] = new Row(columns);
+        }
+    }
+}

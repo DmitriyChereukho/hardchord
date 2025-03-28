@@ -15,6 +15,9 @@ namespace Game
         public int SquareIndex { get; set; }
         public bool SquareOccupied { get; set; }
         
+        // Добавляем ссылку на фигуру, которая занимает эту клетку
+        public Shape OccupyingShape { get; private set; }
+
         void Start()
         {
             Selected = false;
@@ -26,12 +29,27 @@ namespace Game
             return hooverImage.gameObject.activeSelf;
         }
 
-        public void ActivateSquare()
+        public void ActivateSquare(Shape shape)
         {
             hooverImage.gameObject.SetActive(false);
             activeImage.gameObject.SetActive(true);
             Selected = true;
             SquareOccupied = true;
+
+            // Устанавливаем фигуру, которая заняла эту клетку
+            OccupyingShape = shape;
+        }
+
+        public void DeactivateSquare()
+        {
+            
+            hooverImage.gameObject.SetActive(false);
+            activeImage.gameObject.SetActive(false);
+            Selected = false;
+            SquareOccupied = false;
+
+            // Снимаем занятость клетки
+            OccupyingShape = null;
         }
 
         public void SetImage(bool setFirstImage)
@@ -71,15 +89,24 @@ namespace Game
             {
                 Selected = false;
                 hooverImage.gameObject.SetActive(false);
-            } else if (collision.GetComponent<ShapeSquare>() != null)
+            }
+            else if (collision.GetComponent<ShapeSquare>() != null)
             {
                 collision.GetComponent<ShapeSquare>().UnSetOccupied();
             }
         }
 
-        public void PlaceShapeOnBoard()
+        public void PlaceShapeOnBoard(Shape shape)
         {
-            ActivateSquare();
+            ActivateSquare(shape);
+            activeImage.color = shape.shapeColor;
+        }
+
+        // Новый метод для снятия занятости клетки
+        public void UnSetOccupied()
+        {
+            SquareOccupied = false;
+            OccupyingShape = null;  // Убираем ссылку на фигуру
         }
     }
 }

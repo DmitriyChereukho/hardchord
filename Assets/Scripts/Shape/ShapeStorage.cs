@@ -14,18 +14,23 @@ public class ShapeStorage : MonoBehaviour
             shape.CreateShape(shapeData[shapeIndex]);
         }
     }
+    
+    private void OnEnable()
+    {
+        GameEvents.requestNewShapes += RequestNewShapes;
+    }
 
-    public Shape GetCurrentSelectedShape()
+    private void OnDisable()
+    {
+        GameEvents.requestNewShapes -= RequestNewShapes;
+    }
+
+    private void RequestNewShapes()
     {
         foreach (var shape in shapeList)
         {
-            if (shape.IsOnStartPosition() == false && shape.IsAnyOfShapeSquareActive())
-            {
-                return shape;
-            }
+            var shapeIndex = Random.Range(0, shapeData.Count);
+            shape.RequestNewShape(shapeData[shapeIndex]);
         }
-        
-        Debug.Log("No shape selected");
-        return null;
     }
 }

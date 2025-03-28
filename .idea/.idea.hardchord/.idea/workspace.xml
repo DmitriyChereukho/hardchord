@@ -5,14 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b859552-7cfe-4115-be31-7b6ef2ab279e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/do.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/do.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/fa.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/fa.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/lya.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/lya.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/mi.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/mi.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/re.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/re.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/si.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/si.mp3.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/sol.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Music/sol.mp3.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.hardchord/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.hardchord/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Shape.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Shape.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ChordDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ChordDictionary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Game/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Game/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shape/Shape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shape/Shape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Shape/ShapeStorage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Shape/ShapeStorage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/tetris-4.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/tetris-4.mp3.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -22,10 +44,11 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop-2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -40,23 +63,36 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/pglebov/RiderProjects/hardchord/Assets/Prefabs/Shape.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/pglebov/RiderProjects/hardchord/Assets/Scenes/Game.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3fb69655940a48448dd5f28b4c4bd06a1dda00/4a/bccb4dc9/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3fb69655940a48448dd5f28b4c4bd06a1dda00/54/480bf502/Component.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/5f/98930892/CollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/66/57130af7/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dff58e36f77b444a8b1d82c98e716a269600/45/0536accb/RectTransformUtility.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e71a4b669c0c447f824309eeebb9763018600/36/431140b8/AudioSource.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/pglebov/RiderProjects/hardchord/Assets/Scripts/ChordDictionary.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ChordDictionary.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/pglebov/RiderProjects/hardchord/Assets/Scripts/Game/Grid.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/Grid.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Game/GridSquare.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Shape/NoteType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/pglebov/RiderProjects/hardchord/Assets/Scripts/Shape/Shape.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/pglebov/RiderProjects/hardchord/Assets/Scripts/Shape/Shape.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2plUqQyXun6myTO1Ua3RzXq9pC7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
@@ -65,7 +101,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -99,13 +135,15 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="93903">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="93903" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list />
+        <list>
+          <MonoRuntime />
+        </list>
       </option>
       <option name="selectedOptions">
         <list />
@@ -132,6 +170,13 @@
       <workItem from="1738182033537" duration="6964000" />
       <workItem from="1738792999428" duration="887000" />
       <workItem from="1739710275506" duration="6002000" />
+      <workItem from="1741810897066" duration="999000" />
+      <workItem from="1742294231785" duration="601000" />
+      <workItem from="1742310414619" duration="8403000" />
+      <workItem from="1742395967330" duration="16965000" />
+      <workItem from="1743093066023" duration="3783000" />
+      <workItem from="1743171765868" duration="4000" />
+      <workItem from="1743594697156" duration="3475000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -173,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739734577106</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add unity git and change game process">
+      <option name="closed" value="true" />
+      <created>1741811278457</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741811278457</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +251,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="develop" />
                       </list>
                     </value>
                   </entry>
@@ -219,7 +272,8 @@
     <MESSAGE value="Генерация клеток (не работает)" />
     <MESSAGE value="Shapes placement" />
     <MESSAGE value="fix issues and setting grid and shape" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix issues and setting grid and shape" />
+    <MESSAGE value="add unity git and change game process" />
+    <option name="LAST_COMMIT_MESSAGE" value="add unity git and change game process" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

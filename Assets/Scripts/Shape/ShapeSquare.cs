@@ -31,4 +31,13 @@ public class ShapeSquare : MonoBehaviour
     {
         occupiedImage.gameObject.SetActive(false);
     }
+    
+    public void DisableInteraction()
+    {
+        var coll = GetComponent<BoxCollider2D>();
+        if (coll != null)
+        {
+            coll.enabled = false;
+        }
+    }
 }

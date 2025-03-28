@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    public static Action checkIfShapeCanBePlaced;
+    // Изменяем событие, чтобы оно принимало параметр типа Shape
+    public static Action<Shape> checkIfShapeCanBePlaced;
 
-    public static Action moveShapeToStartPosition;
+    // Оставляем без изменений, так как оно не требует параметров
+    public static Action<Shape> moveShapeToStartPosition;
+
+    public static Action requestNewShapes;
+
+    public static Action setShapeInactive;
 }
