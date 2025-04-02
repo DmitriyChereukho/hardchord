@@ -9,7 +9,7 @@ public class GameEvents : MonoBehaviour
     // Оставляем без изменений, так как оно не требует параметров
     public static Action<Shape> moveShapeToStartPosition;
 
-    public static Action requestNewShapes;
+    public static Action<Shape> requestNewShapes;
 
     public static Action setShapeInactive;
 }

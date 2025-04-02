@@ -15,7 +15,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     public Color shapeColor;
     public GameObject squareShapeImage;
     public Vector3 shapeSelectedScale;
-    public Vector2 offset = new(0f, 700f);
+    public Vector2 offset = new(0f, 900f);
     public TextMeshProUGUI noteText;
 
     [HideInInspector] 
@@ -27,7 +27,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     private Vector3 _shapeStartScale;
     private RectTransform _transform;
     private bool _shapeDraggable = true;
-    private Vector3 _startPosition;
+    public Vector3 _startPosition;
     private Canvas _canvas;
     private bool _shapeActive = true;
     private NoteType _noteType;
@@ -138,7 +138,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
     public void RequestNewShape(ShapeData shapeData)
     {
-        _transform.localPosition = _startPosition;
+        _transform.transform.localPosition = _startPosition;
         CreateShape(shapeData);
     }
 
@@ -197,10 +197,11 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         var random = new System.Random();
         var enumValues = Enum.GetValues(typeof(NoteType));
         var randomNoteType = (NoteType)enumValues.GetValue(random.Next(enumValues.Length));
-        
-        return randomNoteType.ToString().Contains("Sharp") 
-            ? (randomNoteType, $"{randomNoteType.ToString()[0]}#") 
-            : (randomNoteType, randomNoteType.ToString());
+
+        return (randomNoteType, randomNoteType.ToString()[0].ToString());
+        //return randomNoteType.ToString().Contains("Sharp") 
+        //    ? (randomNoteType, $"{randomNoteType.ToString()[0]}#") 
+        //    : (randomNoteType, randomNoteType.ToString());
     }
     
     private void SetRandomLightColor()
@@ -218,7 +219,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
             new Color(1.0f, 0.0f, 0.6f),   // Ярко-розовый
             new Color(1.0f, 0.8f, 0.0f),   // Золотисто-жёлтый
             new Color(1.0f, 0.0f, 1.0f),   // Магента
-            new Color(0.0f, 1.0f, 1.0f),   // Бирюзовый
+            new Color(0.0f, 1.0f, 1.0f)   // Бирюзовый
         };
         
         var index = Random.Range(0, brightColors.Length);
@@ -390,10 +391,10 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         GameEvents.checkIfShapeCanBePlaced(this);
 
         // Проверяем соприкосновения с другими фигурами
-        if (CheckCollisionWithOtherShapes())
-        {
+        //if (CheckCollisionWithOtherShapes())
+        //{
             RemoveCollidingShapes();
-        }
+        //}
     }
 
     // Метод для проверки соприкосновений с другими фигурами

@@ -8,11 +8,11 @@ namespace Game
         public ShapeStorage shapeStorage;
         public int columns;
         public int rows;
-        public float squaresGap = 0.5f;
+        public float squaresGap = 0f;
         public GameObject gridSquare;
         public Vector2 startPosition = new(0.0f, 0.0f);
         public float squareScale = 0.5f;
-        public float everySquareOffset;
+        public float everySquareOffset = 0;
 
         private Vector2 _offset = new(0.0f, 0.0f);
         private readonly List<GameObject> _gridSquares = new();
@@ -77,7 +77,7 @@ namespace Game
                     shape.audioSource.PlayOneShot(shape.audioSource.clip);
                 }
                 
-                GameEvents.requestNewShapes();
+                GameEvents.requestNewShapes(shape);
             }
             else
             {
@@ -102,8 +102,8 @@ namespace Game
             var rowNumber = 0;
             var squareRect = _gridSquares[0].GetComponent<RectTransform>();
 
-            _offset.x = squareRect.rect.width + everySquareOffset + squaresGap;
-            _offset.y = squareRect.rect.height + everySquareOffset + squaresGap;
+            _offset.x = squareRect.rect.width * squareScale + everySquareOffset;
+            _offset.y = squareRect.rect.height * squareScale + everySquareOffset;
 
             foreach (var square in _gridSquares)
             {

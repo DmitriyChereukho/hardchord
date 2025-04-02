@@ -25,8 +25,12 @@ public class ShapeStorage : MonoBehaviour
         GameEvents.requestNewShapes -= RequestNewShapes;
     }
 
-    private void RequestNewShapes()
+    private void RequestNewShapes(Shape placedShape)
     {
+        Shape newShape = Instantiate(placedShape, placedShape.transform.parent);
+        newShape._startPosition = placedShape._startPosition;
+        shapeList.Remove(placedShape);
+        shapeList.Add(newShape);
         foreach (var shape in shapeList)
         {
             var shapeIndex = Random.Range(0, shapeData.Count);
