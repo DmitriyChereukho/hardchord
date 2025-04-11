@@ -50,7 +50,6 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     private void OnEnable()
     {
         GameEvents.moveShapeToStartPosition += MoveShapeToStartPosition;
-        GameEvents.setShapeInactive += SetShapeInactive;
     }
 
     private void MoveShapeToStartPosition(Shape shape)
@@ -62,7 +61,6 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     private void OnDisable()
     {
         GameEvents.moveShapeToStartPosition -= MoveShapeToStartPosition;
-        GameEvents.setShapeInactive -= SetShapeInactive;
     }
 
     public bool IsOnStartPosition()
@@ -148,7 +146,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         TotalSquareNumber = GetNumberOfSquares(shapeData);
         (_noteType, noteText.text) = GetRandomNote();
         SetRandomLightColor();
-        audioSource.clip = ChordDictionary.MusicFileByNote.GetValueOrDefault(noteText.text);;
+        audioSource.clip = ChordDictionary.MusicFileByNote.GetValueOrDefault(noteText.text);
         
         while (_currentShape.Count <= TotalSquareNumber)
         {
@@ -229,7 +227,7 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     private float GetYPositionForShapeSquare(ShapeData shapeData, int row, Vector2 moveDistance)
     {
         var shiftOnY = 0f;
-        var additionalGap = 5f;
+        var additionalGap = 0f;
 
         if (shapeData.rows > 1)
         {
@@ -240,12 +238,12 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
 
                 if (row < middleSquareIndex)
                 {
-                    shiftOnY = (moveDistance.y + additionalGap) * 1;
+                    shiftOnY = moveDistance.y;
                     shiftOnY *= multiplier;
                 }
                 else if (row > middleSquareIndex)
                 {
-                    shiftOnY = (moveDistance.y + additionalGap) * -1;
+                    shiftOnY = moveDistance.y;
                     shiftOnY *= multiplier;
                 }
             }
@@ -259,23 +257,23 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
                 {
                     if (row == middleSquareIndex2)
                     {
-                        shiftOnY = (moveDistance.y / 2 + additionalGap) * -1;
+                        shiftOnY = -moveDistance.y / 2;
                     }
 
                     if (row == middleSquareIndex1)
                     {
-                        shiftOnY = (moveDistance.y + additionalGap) / 2;
+                        shiftOnY = moveDistance.y / 2;
                     }
                 }
 
                 if (row < middleSquareIndex1 && row < middleSquareIndex2)
                 {
-                    shiftOnY = (moveDistance.y + additionalGap) * 1;
+                    shiftOnY = moveDistance.y;
                     shiftOnY *= multiplier;
                 }
                 else if (row > middleSquareIndex1 && row > middleSquareIndex2)
                 {
-                    shiftOnY = (moveDistance.y + additionalGap) * -1;
+                    shiftOnY = -moveDistance.y;
                     shiftOnY *= multiplier;
                 }
             }
@@ -370,6 +368,15 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
     public void OnBeginDrag(PointerEventData eventData)
     {
         GetComponent<RectTransform>().localScale = shapeSelectedScale;
+        
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _canvas.transform as RectTransform,
+            eventData.position,
+            Camera.main,
+            out var localPointerPosition
+        );
+
+        offset = _transform.localPosition - (Vector3)localPointerPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -378,11 +385,14 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
         _transform.anchorMax = new Vector2(0, 0);
         _transform.pivot = new Vector2(0, 0);
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform,
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            _canvas.transform as RectTransform,
             eventData.position,
             Camera.main,
-            out var pos);
-        _transform.localPosition = pos + offset;
+            out var localPointerPosition
+        );
+
+        _transform.localPosition = localPointerPosition + offset;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -592,6 +602,8 @@ public class Shape : MonoBehaviour, IPointerClickHandler, IPointerUpHandler, IBe
                 {
                     shape.RemoveShape();
                 }
+                
+                GameEvents.onPointsEarned?.Invoke(1);
             
                 RemoveShape();
             }

@@ -207,8 +207,8 @@ MonoBehaviour:
   activeImage: {fileID: 9115153552422129883}
   normalImage: {fileID: 7704346074879748985}
   normalImages:
-  - {fileID: -7955918195985675719, guid: c7f48b068b092467abf34704373f6ca2, type: 3}
-  - {fileID: -9174574736926535998, guid: 92f51667b59d745f1bbeeff21f61cd9d, type: 3}
+  - {fileID: -7689120669130249789, guid: 3e99ef04743954c03b4e17bf94aace62, type: 3}
+  - {fileID: -7689120669130249789, guid: 3e99ef04743954c03b4e17bf94aace62, type: 3}
 --- !u!61 &9033391371684386105
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4627451, g: 0.4509804, b: 0.4509804, a: 1}
+  m_Color: {r: 0.544284, g: 0.46333218, b: 0.7169812, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
